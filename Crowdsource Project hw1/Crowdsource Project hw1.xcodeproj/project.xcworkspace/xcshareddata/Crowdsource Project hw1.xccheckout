@@ -12,6 +12,8 @@
 	<dict>
 		<key>12B6408FA235E8A57718EE69D551FB9A4AE59C63</key>
 		<string>https://github.com/Strick4888/Crowdsourcing-Seminar-Proj_1.git</string>
+		<key>8604E4171A73F4F9C252F8460D205B23D3B6F1C6</key>
+		<string>https://github.com/lnd5994/Computer-Graphics-C.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Crowdsource Project hw1/Crowdsource Project hw1.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>12B6408FA235E8A57718EE69D551FB9A4AE59C63</key>
 		<string>../../..</string>
+		<key>8604E4171A73F4F9C252F8460D205B23D3B6F1C6</key>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Strick4888/Crowdsourcing-Seminar-Proj_1.git</string>
@@ -28,6 +32,14 @@
 	<string>12B6408FA235E8A57718EE69D551FB9A4AE59C63</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8604E4171A73F4F9C252F8460D205B23D3B6F1C6</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
