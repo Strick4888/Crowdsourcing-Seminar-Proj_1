@@ -44,6 +44,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.requestMessagesFromParse()
         
+        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
         
     }
     
@@ -135,4 +137,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
 }
+
+
 
