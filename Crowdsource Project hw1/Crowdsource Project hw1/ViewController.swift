@@ -19,6 +19,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var tableViewArray:[Message] = Array()
     
+    var refreshControl:UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,9 +46,48 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.requestMessagesFromParse()
         
-        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
         
         
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        println("successfully inside refresh")
+        // Code to refresh table view
+        var query = PFQuery(className:"MsgText")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                println("Successfully retrieved \(objects!.count) messages.")
+                if let objects = objects as? [PFObject] {
+                    var count = 0
+                    println(objects.count)
+                    println(self.tableViewArray.count)
+                    if objects.count != self.tableViewArray.count {
+                        //append new objects
+                        println("New messages")
+                        var currCount = self.tableViewArray.count
+                        while currCount < objects.count {
+                            let object = objects[currCount]
+                            let addText = Message()
+                            addText.text = object["text"] as! String
+                            self.tableViewArray.append(addText)
+                            //println(self.tableViewArray[self.tableViewArray.count])
+                            currCount += 1
+                        }
+                    }
+                    self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
     }
     
     func requestMessagesFromParse() {
@@ -67,7 +108,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let addText = Message()
                         addText.text = object["text"] as! String
                         self.tableViewArray.append(addText)
-                        println(self.tableViewArray[0])
+                        //println(self.tableViewArray[self.tableViewArray.count])
                     }
                     self.tableView.reloadData()
                 }
