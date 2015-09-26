@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--ViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Crowdsource_Project_hw1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="Crowdsource_Project_hw1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -16,16 +17,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7kI-24-urZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bfH-Li-bsz">
+                                <rect key="frame" x="0.0" y="20" width="600" height="529"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qin-4t-wlw">
+                                <rect key="frame" x="16" y="557" width="504" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RmE-LQ-IZg">
+                                <rect key="frame" x="538" y="557" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="WCy-J9-6CK"/>
+                                </constraints>
+                                <state key="normal" title="Send">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ftc-ep-40S"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bfH-Li-bsz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="0CQ-4r-J3u"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="RmE-LQ-IZg" secondAttribute="bottom" constant="13" id="4X4-vc-Hke"/>
+                            <constraint firstItem="Qin-4t-wlw" firstAttribute="top" secondItem="RmE-LQ-IZg" secondAttribute="top" id="K0v-AP-A8W"/>
+                            <constraint firstItem="bfH-Li-bsz" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" id="Siv-Dr-8ps"/>
+                            <constraint firstItem="RmE-LQ-IZg" firstAttribute="leading" secondItem="Qin-4t-wlw" secondAttribute="trailing" constant="18" id="WLN-cb-hA9"/>
+                            <constraint firstItem="RmE-LQ-IZg" firstAttribute="top" secondItem="bfH-Li-bsz" secondAttribute="bottom" constant="8" symbolic="YES" id="XJ0-qV-ZAK"/>
+                            <constraint firstAttribute="trailing" secondItem="bfH-Li-bsz" secondAttribute="trailing" id="Yfw-WC-1g0"/>
+                            <constraint firstItem="Qin-4t-wlw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="hb2-Wd-xiU"/>
+                            <constraint firstItem="RmE-LQ-IZg" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="sVe-Wp-yba"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sendButton" destination="RmE-LQ-IZg" id="AhE-vv-Cgj"/>
+                        <outlet property="tableView" destination="bfH-Li-bsz" id="vOF-hf-KLY"/>
+                        <outlet property="textField" destination="Qin-4t-wlw" id="T34-jM-3Dp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="324" y="427"/>
         </scene>
     </scenes>
 </document>

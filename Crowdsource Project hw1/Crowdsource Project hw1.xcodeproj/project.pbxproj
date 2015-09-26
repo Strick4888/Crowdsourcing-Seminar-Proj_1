@@ -30,6 +30,8 @@
 		BD18F04F1BB4D7080015230E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD18F04E1BB4D7080015230E /* SystemConfiguration.framework */; };
 		BD18F0511BB4D7110015230E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD18F0501BB4D7110015230E /* libz.dylib */; };
 		BD18F0531BB4D71C0015230E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD18F0521BB4D71B0015230E /* libsqlite3.dylib */; };
+		BD38982D1BB609990005A10D /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD38982C1BB609990005A10D /* TextInputTableViewCell.swift */; };
+		BD38982F1BB617CD0005A10D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD38982E1BB617CD0005A10D /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		BD18F04E1BB4D7080015230E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BD18F0501BB4D7110015230E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BD18F0521BB4D71B0015230E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BD38982C1BB609990005A10D /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
+		BD38982E1BB617CD0005A10D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +135,12 @@
 			children = (
 				47FD17E31BB4C80D00CB3A20 /* AppDelegate.swift */,
 				47FD17E51BB4C80D00CB3A20 /* ViewController.swift */,
+				BD38982C1BB609990005A10D /* TextInputTableViewCell.swift */,
 				47FD17E71BB4C80E00CB3A20 /* Main.storyboard */,
 				47FD17EA1BB4C80E00CB3A20 /* Images.xcassets */,
 				47FD17EC1BB4C80E00CB3A20 /* LaunchScreen.xib */,
 				47FD17E11BB4C80D00CB3A20 /* Supporting Files */,
+				BD38982E1BB617CD0005A10D /* Message.swift */,
 			);
 			path = "Crowdsource Project hw1";
 			sourceTree = "<group>";
@@ -289,6 +295,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				47FD17E61BB4C80D00CB3A20 /* ViewController.swift in Sources */,
+				BD38982F1BB617CD0005A10D /* Message.swift in Sources */,
+				BD38982D1BB609990005A10D /* TextInputTableViewCell.swift in Sources */,
 				47FD17E41BB4C80D00CB3A20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

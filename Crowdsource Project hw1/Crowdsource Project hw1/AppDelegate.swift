@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Parse.setApplicationId("YOUR_OWN_APP_ID", clientKey: "YOUR_OWN_CLIENT_KEY")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController:UIViewController = storyboard.instantiateViewControllerWithIdentifier("ViewController") as! UIViewController
+        self.window?.rootViewController = viewController
+        
         return true
     }
 
