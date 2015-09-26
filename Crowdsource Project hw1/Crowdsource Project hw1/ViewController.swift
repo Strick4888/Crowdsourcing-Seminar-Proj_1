@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -25,8 +26,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //testObject["SomeProperty"] = "SomeValue"
         //testObject.saveInBackgroundWithBlock(nil)
         
-        println("yo what's good")
+        //println("yo what's good")
         
+        //let testObject = PFObject(className: "TestObject")
+        //testObject["foo"] = "bar"
+        //testObject.objectForKey("foo")
+        //testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            //println("Object has been saved.")
+        //}
         
         
         self.view.backgroundColor = UIColor.lightGrayColor()
@@ -37,6 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.requestMessagesFromParse()
         
+        
     }
     
     func requestMessagesFromParse() {
@@ -44,6 +52,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // parse into Message objects
         // append to self.tableViewArray
         // call self.tableView.reloadData()
+        
+        var query = PFQuery(className:"MsgText")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            if error == nil {
+                println("Successfully retrieved \(objects!.count) messages.")
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        println(object.objectId)
+                        let addText = Message()
+                        addText.text = object["text"] as! String
+                        self.tableViewArray.append(addText)
+                        println(self.tableViewArray[0])
+                    }
+                    self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,10 +118,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let newMessage = Message()
         newMessage.text = messageString
         self.tableViewArray.append(newMessage)
+        
+        var msg = PFObject(className:"MsgText")
+        msg["text"] = self.textField.text
+        msg.saveInBackgroundWithBlock {
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                //object saved
+            } else {
+                //problem
+            }
+        }
+        
         self.textField.text = ""
-        
-        
-        
         self.tableView.reloadData()
         
     }
