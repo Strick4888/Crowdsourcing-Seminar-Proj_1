@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  Crowdsource Project hw1
 //
-//  Created by Benjamin Strick on 9/24/15.
-//  Copyright (c) 2015 Benjamin Strick. All rights reserved.
+//  Created by Benjamin Strick and Lauren DeNaut on 9/24/15.
+//  Copyright (c) 2015 Benjamin Strick and Lauren DeNaut. All rights reserved.
 //
 
 import UIKit
@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var Alert: UILabel!
     
     var tableViewArray:[Message] = Array()
     
@@ -43,6 +44,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.textField.delegate = self
+        //self.Alert.delegate = self
+        self.Alert.hidden = true
+        
+        self.textField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
         
         self.requestMessagesFromParse()
         
@@ -158,23 +163,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //println("send button tapped")
         
         let messageString = self.textField.text
-        let newMessage = Message()
-        newMessage.text = messageString
-        self.tableViewArray.append(newMessage)
+        if count(messageString) < 15 {
+            let newMessage = Message()
+            newMessage.text = messageString
+            self.tableViewArray.append(newMessage)
         
-        var msg = PFObject(className:"MsgText")
-        msg["text"] = self.textField.text
-        msg.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                //object saved
-            } else {
-                //problem
+            var msg = PFObject(className:"MsgText")
+            msg["text"] = self.textField.text
+            msg.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    //object saved
+                } else {
+                    //problem
+                }
             }
+        
+            self.textField.text = ""
+            self.tableView.reloadData()
         }
         
-        self.textField.text = ""
-        self.tableView.reloadData()
+    }
+    
+    
+    func textFieldDidChange(textField: UITextField) {
+        //your code
+        let messageString = self.textField.text
+        if count(messageString) > 15 {
+            println("message too long")
+            self.Alert.hidden = false
+        } else {
+            self.Alert.hidden = true
+        }
         
     }
 }
