@@ -163,7 +163,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //println("send button tapped")
         
         let messageString = self.textField.text
-        if count(messageString) < 15 {
+        if count(messageString) < 25 {
             let newMessage = Message()
             newMessage.text = messageString
             self.tableViewArray.append(newMessage)
@@ -189,7 +189,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func textFieldDidChange(textField: UITextField) {
         //your code
         let messageString = self.textField.text
-        if count(messageString) > 15 {
+        if count(messageString) > 25 {
             println("message too long")
             self.Alert.hidden = false
         } else {
